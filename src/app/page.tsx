@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import Link from "next/link";
 
 // Add custom CSS for elegant animations
 const customStyles = `
@@ -118,7 +119,7 @@ const Website = () => {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: customStyles }} />
-      <div className="min-h-screen" style={{ backgroundColor: '#fafafa' }}>
+      <div className="min-h-screen bg-green-600" style={{ backgroundColor: '#fafafa' }}>
       {/* Header */}
       <header className="flex justify-between items-center p-6">
         {/* Logo Section - Top Left */}
@@ -147,12 +148,12 @@ const Website = () => {
 
         {/* Sign In / Sign Up Buttons - Top Right */}
         <div className="flex space-x-4">
-          <button className="px-6 py-2 text-green-600 border-2 border-green-500 rounded-lg hover:bg-green-50 transition-colors duration-200 font-medium">
+          <Link href="/components/login"><button className="cursor-pointer px-6 py-2 text-green-600 border-2 border-green-500 rounded-lg hover:bg-green-50 transition-colors duration-200 font-medium">
             Sign In
-          </button>
-          <button className="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors duration-200 font-medium shadow-md">
+          </button></Link>
+           <Link href="/components/signUp"><button className="cursor-pointer px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors duration-200 font-medium shadow-md">
             Sign Up
-          </button>
+          </button></Link>
         </div>
       </header>
 
