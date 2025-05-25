@@ -1,5 +1,5 @@
 const CHUNK_PUBLIC_PATH = "transform.js";
-const runtime = require("./build/chunks/[turbopack]_runtime.js");
+import runtime from "./build/chunks/[turbopack]_runtime.js";
 runtime.loadChunk("build/chunks/postcss_config_mjs_transform_ts_f0ffbaad._.js");
 runtime.loadChunk("build/chunks/[root of the server]__04d7a048._.js");
 runtime.getOrInstantiateRuntimeModule("[turbopack-node]/globals.ts [postcss] (ecmascript)", CHUNK_PUBLIC_PATH);

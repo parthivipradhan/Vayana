@@ -8,7 +8,7 @@ export const fetchCache = 'force-no-store';
 
 import { NextResponse } from 'next/server';
 
-export async function POST(request: Request) {
+export async function POST() {
   const agentId = process.env.AGENT_ID;
   if (!agentId) throw Error('AGENT_ID is not set or received.');
   const apiKey = process.env.XI_API_KEY;
@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     const data = await response.json();
     return NextResponse.json({ apiKey: data.signed_url });
   } catch (error) {
-    // @ts-ignore
+    // @ts-expect-error
     const message = error.message || error.toString();
     return NextResponse.json({ error: message }, { status: 500 });
   }

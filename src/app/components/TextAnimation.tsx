@@ -105,7 +105,7 @@ export default function AiTalkingAnimation({
               repeat: Infinity,
               ease: 'easeInOut',
             }}
-            className="bg-violet-600 mt-2 h-5 w-2"
+            className="bg-green-600 mt-2 h-5 w-2"
           />
         )}
       </div>

@@ -289,7 +289,7 @@ const Website = () => {
           <div className="shape"></div>
         </div>
 
-        <header className="flex justify-between items-center p-6 glass-effect relative z-10">
+        <header className="flex justify-between items-center px-6 glass-effect relative z-10">
           <div className="flex items-center animate-slide-in-left">
             <div className="relative">
               <div className="flex flex-col items-center animate-breathe">
@@ -303,6 +303,12 @@ const Website = () => {
           </div>
 
           <div className="flex space-x-4 animate-slide-in-right">
+            <Link href="/c/slug">
+              <button className="cursor-pointer px-6 py-2 text-green-600 border-2 border-green-500 rounded-lg hover:bg-green-50 transition-all duration-300 font-medium transform hover:scale-105 hover:shadow-lg relative overflow-hidden group">
+                <span className="relative z-10">Therapist</span>
+                <div className="absolute inset-0 bg-green-50 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+              </button>
+            </Link>
             <Link href="/login">
               <button className="cursor-pointer px-6 py-2 text-green-600 border-2 border-green-500 rounded-lg hover:bg-green-50 transition-all duration-300 font-medium transform hover:scale-105 hover:shadow-lg relative overflow-hidden group">
                 <span className="relative z-10">Sign In</span>
@@ -368,7 +374,7 @@ const Website = () => {
             </div>
           </div>
 
-          <div className={`text-center mt-8 transition-all duration-1000 delay-1500 ${showFullName ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-8'}`}>
+          <div className={`py-4 text-center mt-8 transition-all duration-1000 delay-1500 ${showFullName ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-8'}`}>
             <h2 className="text-4xl font-bold text-gray-800 mb-6 animate-gentle-float">
               Welcome to <span className="gradient-text">Vayana</span>
             </h2>
