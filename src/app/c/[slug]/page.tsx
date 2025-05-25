@@ -89,8 +89,6 @@ export default function () {
     };
   }, [slug]);
   return <>
-  <div className='hero-background'>
-
   <TextAnimation
         currentText={currentText}
         onStopListening={handleStopListening}
@@ -122,6 +120,5 @@ export default function () {
           </div>
         </div>
       )}
-      </div>
       </>;
 }

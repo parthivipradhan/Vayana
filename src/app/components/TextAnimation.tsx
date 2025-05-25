@@ -41,7 +41,7 @@ export default function AiTalkingAnimation({
   }, [isAudioPlaying]);
 
   return (
-    <div className="bg-gray-100 flex min-h-screen flex-col items-center justify-center p-4">
+    <div className="bg-green-200 flex min-h-screen flex-col items-center justify-center p-4">
       <div
         role="button"
         onClick={handleCircleClick}
@@ -49,7 +49,7 @@ export default function AiTalkingAnimation({
         aria-label={aiState === 'listening' ? 'Stop listening' : 'Start listening'}
       >
         <motion.div
-          className="from-pink-500 to-violet-600 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br shadow-lg"
+          className="from-green-400 to-green-600 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br shadow-lg"
           animate={
             aiState === 'idle'
               ? { scale: [1, 1.1, 1] }
