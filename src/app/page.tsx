@@ -204,7 +204,7 @@ const Website = () => {
     const hopTimer = setTimeout(() => setLogoHopped(true), 1200);
     
     const fullText = "Vayana";
-    let letterTimers = [];
+    let letterTimers: NodeJS.Timeout[] = [];
     const nameTimer = setTimeout(() => {
       setShowFullName(true);
       for (let i = 0; i < fullText.length; i++) {
@@ -225,7 +225,7 @@ const Website = () => {
       setShowSparkles(false);
       setShowFeatures(true);
       setTimeout(() => {
-        const textElement = document.querySelector('.animate-blink-cursor');
+        const textElement = document.querySelector('.animate-blink-cursor') as HTMLElement | null;
         if (textElement) textElement.style.borderRight = 'none';
       }, 2000);
     }, 6000);
