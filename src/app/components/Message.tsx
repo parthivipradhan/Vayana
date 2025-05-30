@@ -2,7 +2,7 @@
 
 import { Cpu, User } from 'react-feather';
 
-export default function ({
+export default function Message({
   conversationItem,
 }: {
   conversationItem: { role: string; formatted: { transcript: string } };

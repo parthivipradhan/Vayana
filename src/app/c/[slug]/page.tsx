@@ -1,7 +1,4 @@
-// File: app/c/[slug]/page.tsx
-
 'use client';
-
 import { toast } from 'sonner';
 import { useParams } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
