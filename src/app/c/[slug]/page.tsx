@@ -97,10 +97,10 @@ export default function () {
         />
       {messages.length > 0 && (
         <button
-        className="fixed right-4 top-2 text-sm underline"
+        className="fixed right-4 top-2 text-sm underline cursor-pointer px-6 py-2 text-green-600 border-2 border-green-500 rounded-lg hover:bg-green-50 transition-all duration-300 font-medium transform hover:scale-105 hover:shadow-lg "
         onClick={() => setIsTranscriptOpen(!isTranscriptOpen)}
         >
-          Show Transcript
+          <span className="relative z-10">Show Conversation</span>
         </button>
       )}
       {isTranscriptOpen && (

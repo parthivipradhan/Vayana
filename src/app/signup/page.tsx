@@ -14,7 +14,7 @@ export default function SignupFormDemo() {
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     setIsSubmitting(true);
     // Simulate form submission
@@ -23,7 +23,7 @@ export default function SignupFormDemo() {
     setIsSubmitting(false);
   };
 
-  const handleInputChange = (field, value) => {
+  const handleInputChange = (field: string, value: any) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
@@ -56,7 +56,7 @@ export default function SignupFormDemo() {
                 placeholder="Tyler"
                 label="First name"
                 value={formData.firstname}
-                onChange={(value) => handleInputChange("firstname", value)}
+                onChange={(value: any) => handleInputChange("firstname", value)}
                 onFocus={() => setFocusedField("firstname")}
                 onBlur={() => setFocusedField("")}
                 focused={focusedField === "firstname"}
@@ -67,7 +67,7 @@ export default function SignupFormDemo() {
                 placeholder="Durden"
                 label="Last name"
                 value={formData.lastname}
-                onChange={(value) => handleInputChange("lastname", value)}
+                onChange={(value: any) => handleInputChange("lastname", value)}
                 onFocus={() => setFocusedField("lastname")}
                 onBlur={() => setFocusedField("")}
                 focused={focusedField === "lastname"}
@@ -81,7 +81,7 @@ export default function SignupFormDemo() {
               placeholder="projectmayhem@fc.com"
               label="Email Address"
               value={formData.email}
-              onChange={(value) => handleInputChange("email", value)}
+              onChange={(value: any) => handleInputChange("email", value)}
               onFocus={() => setFocusedField("email")}
               onBlur={() => setFocusedField("")}
               focused={focusedField === "email"}
@@ -94,7 +94,7 @@ export default function SignupFormDemo() {
               placeholder="25"
               label="Age"
               value={formData.age}
-              onChange={(value) => handleInputChange("age", value)}
+              onChange={(value: any) => handleInputChange("age", value)}
               onFocus={() => setFocusedField("age")}
               onBlur={() => setFocusedField("")}
               focused={focusedField === "age"}
@@ -108,7 +108,7 @@ export default function SignupFormDemo() {
                 placeholder="••••••••"
                 label="Password"
                 value={formData.password}
-                onChange={(value) => handleInputChange("password", value)}
+                onChange={(value: any) => handleInputChange("password", value)}
                 onFocus={() => setFocusedField("password")}
                 onBlur={() => setFocusedField("")}
                 focused={focusedField === "password"}
@@ -124,6 +124,7 @@ export default function SignupFormDemo() {
 
             {/* Submit button with loading state */}
             <button
+              id="submitSignUp"
               className={`group relative w-full h-12 rounded-xl font-semibold text-white transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] ${
                 isSubmitting 
                   ? 'bg-green-400 cursor-not-allowed' 
