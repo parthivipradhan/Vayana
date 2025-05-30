@@ -2,11 +2,11 @@
 
 import { Cpu, User } from 'react-feather';
 
-export default function Message({
+const Message=({
   conversationItem,
 }: {
   conversationItem: { role: string; formatted: { transcript: string } };
-}) {
+})=>{
   return (
     <div className="flex max-w-full flex-row flex-wrap items-start gap-x-3">
       <div className="max-w-max rounded border p-2">
@@ -16,3 +16,5 @@ export default function Message({
     </div>
   );
 }
+Message.displayName = 'Message';
+export default Message;
