@@ -8,6 +8,7 @@ import {
   IconBrandGoogle,
 } from "@tabler/icons-react";
 
+<script type="module" src="firebase"></script>
 export default function SignupFormDemo() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
