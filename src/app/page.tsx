@@ -202,7 +202,7 @@ const Website = () => {
 
   useEffect(() => {
     const hopTimer = setTimeout(() => setLogoHopped(true), 1200);
-    
+
     const fullText = "Vayana";
     let letterTimers: NodeJS.Timeout[] = [];
     const nameTimer = setTimeout(() => {
@@ -281,7 +281,7 @@ const Website = () => {
     <>
       <style dangerouslySetInnerHTML={{ __html: customStyles }} />
       <div className="min-h-screen relative overflow-hidden" style={{ backgroundColor: '#fafafa' }}>
-        
+
         <div className="floating-shapes">
           <div className="shape"></div>
           <div className="shape"></div>
@@ -353,7 +353,7 @@ const Website = () => {
                         ))}
                       </div>
                     </div>
-                    
+
                     {showSparkles && (
                       <>
                         <div className="absolute -top-8 -left-4 w-4 h-4 bg-green-400 rounded-full animate-sparkle" style={{ animationDelay: '0s' }}></div>
@@ -366,7 +366,7 @@ const Website = () => {
                     )}
                   </div>
                 </div>
-                
+
                 <p className={`text-2xl md:text-3xl text-gray-600 font-light transition-all duration-1000 delay-1000 ${showFullName ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-4'}`}>
                   <span className="gradient-text font-medium">Your AI Companion for Emotional Support</span>
                 </p>
@@ -395,7 +395,7 @@ const Website = () => {
                   Experience a new approach to mental wellness with features designed specifically for your emotional well-being and therapeutic journey.
                 </p>
               </div>
-              
+
               <div className="therapy-features-grid">
                 {features.map((feature, index) => (
                   <div key={index} className={`feature-card rounded-2xl p-8 text-left relative overflow-hidden animate-fade-in-up`} style={{ animationDelay: `${index * 0.15}s` }}>
