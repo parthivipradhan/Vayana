@@ -39,6 +39,5 @@ router.route("/current-user").get(verifyJWT, getCurrentUser)
 router.route("/update-account").patch(verifyJWT, updateAccountDetails)
 
 router.route("/c/:username").get(verifyJWT, getUserProfile)
-router.route("/history").get(verifyJWT, getWatchHistory)
 
 export default router
