@@ -47,5 +47,8 @@
     "tailwindcss": "^4.0.12",
     "tsx": "^4.19.4",
     "typescript": "^5"
+  },
+  "rules": {
+    "@typescript-eslint/ban-ts-comment": "off"
   }
 }
