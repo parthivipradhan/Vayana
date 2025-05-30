@@ -6,29 +6,32 @@ import { type Role, useConversation } from '@11labs/react';
 import TextAnimation from '../../components/TextAnimation';
 import { X } from 'react-feather';
 import Message from '../../components/Message';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function () {
   const { slug } = useParams();
   const [currentText, setCurrentText] = useState('');
   const [messages, setMessages] = useState<any[]>([]);
   const [isTranscriptOpen, setIsTranscriptOpen] = useState(false);
-  const loadConversation = () => {
-    fetch(`/api/c?id=${slug}`)
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.length > 0) {
-          setMessages(
-            res.map((i: any) => ({
-              ...i,
-              formatted: {
-                text: i.content_transcript,
-                transcript: i.content_transcript,
-              },
-            }))
-          );
-        }
-      });
+  const [sessionId] = useState(uuidv4());
+
+  // Store only this session's messages in state
+  const [sessionMessages, setSessionMessages] = useState<any[]>([]);
+
+  const addMessage = (msg: any) => {
+    setSessionMessages((prev) => [
+      ...prev,
+      {
+        ...msg,
+        sessionId,
+        formatted: {
+          text: msg.content[0]?.transcript ?? '',
+          transcript: msg.content[0]?.transcript ?? '',
+        },
+      },
+    ]);
   };
+
   const conversation = useConversation({
     onError: (error: string) => {
       toast(error);
@@ -39,23 +42,15 @@ export default function () {
     onMessage: (props: { message: string; source: Role }) => {
       const { message, source } = props;
       if (source === 'ai') setCurrentText(message);
-      fetch('/api/c', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          id: slug,
-          item: {
-            type: 'message',
-            status: 'completed',
-            object: 'realtime.item',
-            id: 'item_' + Math.random(),
-            role: source === 'ai' ? 'assistant' : 'user',
-            content: [{ type: 'text', transcript: message }],
-          },
-        }),
-      }).then(loadConversation);
+      addMessage({
+        id: 'item_' + Math.random(),
+        role: source === 'ai' ? 'assistant' : 'user',
+        content: [{ type: 'text', transcript: message }],
+        sessionId,
+      });
     },
   });
+
   const connectConversation = useCallback(async () => {
     toast('Setting up ElevenLabs...');
     try {
@@ -71,9 +66,11 @@ export default function () {
       toast('Failed to set up ElevenLabs client :/');
     }
   }, [conversation]);
+
   const disconnectConversation = useCallback(async () => {
     await conversation.endSession();
   }, [conversation]);
+
   const handleStartListening = () => {
     if (conversation.status !== 'connected') connectConversation();
   };
@@ -92,10 +89,12 @@ export default function () {
         onStartListening={handleStartListening}
         isAudioPlaying={conversation.isSpeaking}
         />
-      {messages.length > 0 && (
+      {sessionMessages.length > 0 && (
         <button
         className="fixed right-4 top-2 text-sm underline cursor-pointer px-6 py-2 text-green-600 border-2 border-green-500 rounded-lg hover:bg-green-50 transition-all duration-300 font-medium transform hover:scale-105 hover:shadow-lg "
-        onClick={() => setIsTranscriptOpen(!isTranscriptOpen)}
+        onClick={() => {
+          setIsTranscriptOpen(!isTranscriptOpen);
+        }}
         >
           <span className="relative z-10">Show Conversation</span>
         </button>
@@ -110,7 +109,7 @@ export default function () {
               </button>
             </div>
             <div className="mt-4 flex flex-col gap-y-4 border-t py-4">
-              {messages.map((conversationItem) => (
+              {sessionMessages.map((conversationItem) => (
                 <Message key={conversationItem.id} conversationItem={conversationItem} />
               ))}
             </div>
